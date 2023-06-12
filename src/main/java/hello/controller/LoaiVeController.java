@@ -120,7 +120,7 @@ public class LoaiVeController {
 		model.addAttribute("currentPage", page);
 		model.addAttribute("key1", searchKey);
 		if (loaiVe.size() == 0) {
-			model.addAttribute("timKiems", "Không có kết quả tìm kiếm");
+			model.addAttribute("timKiems", "Không có kết quả tìm kiếm (Vui lòng tìm kiếm theo mã loại vé hoặc tên loại vé)");
 		}
 		return "admin/danhSachLoaiVe2";
 	}

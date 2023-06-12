@@ -91,6 +91,24 @@ public class ThongTinThanhToanService {
 	}
 //====================================GIA================================================
 
+//	public List<ThongTinThanhToan> thongTinTTDanhSachTheoTrangThai() {
+//		List<ThongTinThanhToan> list = thongTinThanhToanRepository.thongTinTTDanhSachTheoTrangThai();
+//		return list;
+//	}
+//
+//	public List<Object[]> findAllByJoin() {
+//		return thongTinThanhToanRepository.findAllByJoin();
+//	}
+//
+//	public void capNhatTT(int maTTThanhToan) {
+//		thongTinThanhToanRepository.capNhatTT(maTTThanhToan);
+//	}
+//
+//	public List<Object[]> findWithPageAble_Gia(String searchKey) {
+//		return thongTinThanhToanRepository.findWithPageAble_Gia(searchKey);
+//	}
+	
+
 	public List<ThongTinThanhToan> thongTinTTDanhSachTheoTrangThai() {
 		List<ThongTinThanhToan> list = thongTinThanhToanRepository.thongTinTTDanhSachTheoTrangThai();
 		return list;
@@ -118,5 +136,7 @@ public class ThongTinThanhToanService {
 		long totalRecord = thongTinThanhToanRepository.countSearch_Gia(searchKey);
 		return (int) Math.ceil((double) totalRecord / settingPage.getPageSize());
 	}
+
+	
 
 }

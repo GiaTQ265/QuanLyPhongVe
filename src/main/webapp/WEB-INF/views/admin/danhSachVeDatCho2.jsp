@@ -46,7 +46,7 @@
 										<th></th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="tablePaging">
 									<c:forEach var="c" items="${ThongTinThanhToan}"
 										varStatus="status">
 										<tr>
@@ -62,7 +62,7 @@
 												<a
 												href="${pageContext.request.contextPath}/admin/ve/xoa-ve-dat-cho/${c[8]}"
 												onclick="return confirm('Bạn có muốn hủy vé này không?')"><button
-														type="button" class="btn btn-danger">Hủy</button></a> <a
+														type="button" class="btn btn-danger">Hủy vé</button></a> <a
 												href="${pageContext.request.contextPath}/admin/ve/ve-may-bay/${c[8]}"><button
 														type="button" class="btn btn-success">Thanh toán</button></a>
 											</td>
@@ -70,13 +70,14 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							<!-- <div id="pagination" style="float: right;"></div> -->
 							<div class="list">
-
 								<p style="color: red">${timKiems}</p>
 								<br>
 							</div>
+
 							<!-- Phân trang -->
-							<div class="pagination" style="float: right;">
+							 <div class="pagination" style="float: right;">
 								<c:if test="${currentPage > 1}">
 									<li class="page-item"><a
 										href="${pageContext.request.contextPath}/admin/ve/tim-kiem?searchKey=${key}&page=${currentPage-1}">Trang trước</a>
@@ -123,7 +124,7 @@
 									<li class="page-item"><a
 										href="${pageContext.request.contextPath}/admin/ve/tim-kiem1?searchKey=${key1}&page=${currentPage+1}">Tiếp theo</a></li>
 								</c:if>
-							</div>
+							</div> 
 						</section>
 					</div>
 				</div>
@@ -131,6 +132,71 @@
 		</section>
 
 	</section>
+
 	<!--main content end-->
 </body>
+<!-- <script>
+	var table = document.getElementById("tablePaging");
+	var rowsPerPage = 1; // Số dòng hiển thị trên mỗi trang
+	let currentPage = 1; // Trang hiện tại
+
+	function displayTable() {
+		  var startIndex = (currentPage - 1) * rowsPerPage;
+		  var endIndex = startIndex + rowsPerPage;
+		  var rows = table.rows;
+		  
+		  // Ẩn tất cả các dòng của bảng
+		  for (var i = 0; i < rows.length; i++) {
+		    if (i >= startIndex && i < endIndex) {
+		      rows[i].style.display = "table-row";
+		    } else {
+		      rows[i].style.display = "none";
+		    }
+		  }
+		}
+
+		function createPagination() {
+		  var pageCount = Math.ceil((table.rows.length - 1) / rowsPerPage); // Tính tổng số trang
+		  
+		  // Tạo nút điều hướng trang trước
+		  var prevButton = document.createElement("button");
+		  prevButton.classList.add("btn");
+		  prevButton.classList.add("btn-info");
+		  prevButton.innerHTML = "Trang trước";
+		  prevButton.addEventListener("click", function() {
+		    if (currentPage > 1) {
+		      currentPage--;
+		      displayTable();
+		      createPagination();
+		    }
+		  });
+		  
+		  // Tạo nút điều hướng trang tiếp theo
+		  var nextButton = document.createElement("button");
+		  nextButton.classList.add("btn");
+		  nextButton.classList.add("btn-info");
+		  nextButton.innerHTML = "Trang tiếp";
+		  nextButton.addEventListener("click", function() {
+		    if (currentPage < pageCount) {
+		    	currentPage++;
+		      displayTable();
+		      createPagination();
+		    }
+		  });
+		  
+		  // Hiển thị trang hiện tại và tổng số trang
+		  var pageInfo = document.createElement("span");
+		  pageInfo.innerHTML = " Trang " + currentPage + " / " + pageCount +" ";
+		  
+		  // Thêm các phần tử vào phân trang
+		  var pagination = document.getElementById("pagination");
+		  pagination.innerHTML = "";
+		  pagination.appendChild(prevButton);
+		  pagination.appendChild(pageInfo);
+		  pagination.appendChild(nextButton);
+		}
+
+		displayTable();
+		createPagination();
+	</script> -->
 </html>

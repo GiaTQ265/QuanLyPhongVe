@@ -125,6 +125,47 @@ public class VeController {
 	 * @author GiaTQ
 	 */
 	// Tới trang danh sách vé đặt chỗ
+//	@RequestMapping(value = "/danh-sach-ve-dat-cho", method = RequestMethod.GET)
+//	public String danhSachVeDatCho(Model model) {
+//		List<Object[]> thongTinThanhToans = thongTinThanhToanService.findAllByJoin();
+//		model.addAttribute("ThongTinThanhToan", thongTinThanhToans);
+//		return "/admin/danhSachVeDatCho";
+//	}
+//
+//	// Tìm kiếm vé đặt chỗ theo số điện thoại
+//	@GetMapping("/tim-kiem")
+//	public String timKiemVeDatCho(@RequestParam(name = "searchKey") String searchKey, Model model) {
+//		List<Object[]> thongTinThanhToan = thongTinThanhToanService.findWithPageAble_Gia(searchKey);
+//		model.addAttribute("ThongTinThanhToan", thongTinThanhToan);
+//		model.addAttribute("key", searchKey);
+//		if (thongTinThanhToan.size() == 0) {
+//			model.addAttribute("timKiems", "Không có kết quả tìm kiếm");
+//		}
+//		return "admin/danhSachVeDatCho2";
+//	}
+//
+//	// Xóa loại vé đặt chỗ
+//	@GetMapping("/xoa-ve-dat-cho/{maTTThanhToan}")
+//	public String xoaVeDatCho(@PathVariable(name = "maTTThanhToan") int maTTThanhToan, Model model) {
+//		thongTinThanhToanService.delete(maTTThanhToan);
+//		return "redirect:/admin/ve/danh-sach-ve-dat-cho";
+//	}
+//
+//	// Thanh toán vé đặt chỗ
+//	@GetMapping(value = "/ve-may-bay/{maTTThanhToan}")
+//	public String capNhatTT(@PathVariable(name = "maTTThanhToan") int maTTThanhToan, Model model) {
+//		thongTinThanhToanService.capNhatTT(maTTThanhToan);
+//		ThongTinVe thongTinVe = thongTinThanhToanService.findById(maTTThanhToan).getThongTinVe();
+//		List<Object[]> lit = thongTinThanhToanService.findAllByJoinByID(thongTinVe.getMaVe());
+//		Object[] arr = lit.get(0);
+//		model.addAttribute("ThongTinThanhToan", arr);
+//		return "/admin/veMayBay";
+//	}
+	
+	/**
+	 * @author GiaTQ
+	 */
+	// Tới trang danh sách vé đặt chỗ
 	@RequestMapping(value = "/danh-sach-ve-dat-cho", method = RequestMethod.GET)
 	public String danhSachVeDatCho(Model model, @RequestParam(defaultValue = "1") Integer page) {
 		SettingPage settingPage = new SettingPage(page);
@@ -171,6 +212,7 @@ public class VeController {
 		model.addAttribute("ThongTinThanhToan", arr);
 		return "/admin/veMayBay";
 	}
+
 
 //=============================================================================================================================	
 	/**

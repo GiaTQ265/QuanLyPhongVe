@@ -131,7 +131,57 @@ public class ThongTinThanhToanRepository {
 	}
 
 	// ============================================GIA==============================================
-	
+
+	// Cập nhật trạng thái
+//	public void capNhatTT(int maTTThanhToan) {
+//		ThongTinThanhToan tt = findById(maTTThanhToan);
+//		tt.setTrangThai("Da thanh toan");
+//		update(tt);
+//	}
+//
+//	// Hiển thị thông tin thanh toán với trạng thái chưa thanh toán
+//	public List<ThongTinThanhToan> thongTinTTDanhSachTheoTrangThai() {
+//		Session session = sessionFactory.getCurrentSession();
+//		String sql = "select * from ThongTinThanhToan where trangThai = 'Chua thanh toan'";
+//		List<ThongTinThanhToan> list = session.createSQLQuery(sql).getResultList();
+//		return list;
+//	}
+//
+//	// Hiển thị thông tin thanh toán với trạng thái chưa thanh toán
+//	public List<Object[]> findAllByJoin() {
+//		LocalDate ngayHienTai = LocalDate.now();
+//		LocalDate date = LocalDate.now().minusDays(1);
+//		LocalTime time = LocalTime.now();
+//		String sql = "Select ttv.maVe,ttv.maChuyenBay,kh.soDienThoai,lv.maLoaiVe,dv.maDichVu,tt.gioThanhToan,tt.ngayThanhToan,tt.trangThai,tt.maTTThanhToan \r\n"
+//				+ "from ThongTinThanhToan tt\r\n" + "inner join ThongTinVe ttv on tt.maVe = ttv.maVe \r\n"
+//				+ "inner join DichVu dv on ttv.maDichVu = dv.maDichVu\r\n"
+//				+ "inner join LoaiVe lv on ttv.maLoaiVe = lv.maLoaiVe\r\n"
+//				+ "inner join KhachHang kh on ttv.maKhachHang = kh.maKhachHang\r\n"
+//				+ "where tt.trangThai ='Chua thanh toan' and "
+//				+ "((tt.ngayThanhToan = :ngayThanhToan AND tt.gioThanhToan >= :gioThanhToan)"
+//				+ "OR (tt.ngayThanhToan >= :ngayHienTai))";
+//		@SuppressWarnings("unchecked")
+//		Query<Object[]> query = sessionFactory.getCurrentSession().createNativeQuery(sql)
+//				.setParameter("ngayThanhToan", date).setParameter("gioThanhToan", time)
+//				.setParameter("ngayHienTai", ngayHienTai);
+//		return query.getResultList();
+//	}
+//
+//	// Phân trang khi tìm kiếm
+//	public List<Object[]> findWithPageAble_Gia(String searchKey) {
+//		Session session = sessionFactory.getCurrentSession();
+//		String sql = "Select ttv.maVe,ttv.maChuyenBay,kh.soDienThoai,lv.maLoaiVe,dv.maDichVu,tt.gioThanhToan,tt.ngayThanhToan,tt.trangThai,tt.maTTThanhToan \r\n"
+//				+ "from ThongTinThanhToan tt\r\n" 
+//				+ "inner join ThongTinVe ttv on tt.maVe = ttv.maVe \r\n"
+//				+ "inner join DichVu dv on ttv.maDichVu = dv.maDichVu\r\n"
+//				+ "inner join LoaiVe lv on ttv.maLoaiVe = lv.maLoaiVe\r\n"
+//				+ "inner join KhachHang kh on ttv.maKhachHang = kh.maKhachHang\r\n"
+//				+ "where tt.trangThai ='Chua thanh toan' and ttv.maVe like '%"+searchKey+"%'";
+//		org.hibernate.query.Query<Object[]> createQuery = session.createSQLQuery(sql);
+//		return createQuery.getResultList();
+//
+//	}
+
 	// Cập nhật trạng thái
 	public void capNhatTT(int maTTThanhToan) {
 		ThongTinThanhToan tt = findById(maTTThanhToan);
